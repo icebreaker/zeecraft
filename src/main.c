@@ -167,40 +167,40 @@ unsigned int zc_block_create(const unsigned int id,
 	glBegin(GL_QUADS);
 
 	/* Front */
-    glTexCoord2f(sx, sy); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
-    glTexCoord2f(sw, sy); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
-    glTexCoord2f(sw, sh); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
-    glTexCoord2f(sx, sh); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE); 
+	glTexCoord2f(sx, sy); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
+	glTexCoord2f(sw, sy); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
+	glTexCoord2f(sw, sh); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
+	glTexCoord2f(sx, sh); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE); 
 
 	/* Back */
-    glTexCoord2f(sw, sy); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
-    glTexCoord2f(sw, sh); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
-    glTexCoord2f(sx, sh); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
-    glTexCoord2f(sx, sy); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);
+	glTexCoord2f(sw, sy); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
+	glTexCoord2f(sw, sh); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
+	glTexCoord2f(sx, sh); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
+	glTexCoord2f(sx, sy); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);
 
 	/* Top */
-    glTexCoord2f(tx, th); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);
-    glTexCoord2f(tx, ty); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
-    glTexCoord2f(tw, ty); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
-    glTexCoord2f(tw, th); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
+	glTexCoord2f(tx, th); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);
+	glTexCoord2f(tx, ty); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
+	glTexCoord2f(tw, ty); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
+	glTexCoord2f(tw, th); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
 
 	/* Bottom */
-    glTexCoord2f(bw, by); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);
-    glTexCoord2f(bx, by); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
-    glTexCoord2f(bx, bh); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
-    glTexCoord2f(bw, bh); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);
+	glTexCoord2f(bw, by); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);
+	glTexCoord2f(bx, by); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
+	glTexCoord2f(bx, bh); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
+	glTexCoord2f(bw, bh); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);
 
 	/* Right */
-    glTexCoord2f(sw, sy); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
-    glTexCoord2f(sw, sh); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
-    glTexCoord2f(sx, sh); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
-    glTexCoord2f(sx, sy); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
+	glTexCoord2f(sw, sy); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
+	glTexCoord2f(sw, sh); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
+	glTexCoord2f(sx, sh); glVertex3f( ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
+	glTexCoord2f(sx, sy); glVertex3f( ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
 
 	/* Left */
-    glTexCoord2f(sx, sy); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
-    glTexCoord2f(sw, sy); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
-    glTexCoord2f(sw, sh); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
-    glTexCoord2f(sx, sh); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
+	glTexCoord2f(sx, sy); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
+	glTexCoord2f(sw, sy); glVertex3f(-ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
+	glTexCoord2f(sw, sh); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE);  
+	glTexCoord2f(sx, sh); glVertex3f(-ZC_BLOCK_SIZE,  ZC_BLOCK_SIZE, -ZC_BLOCK_SIZE);  
 
 	glEnd();
 	glEndList();

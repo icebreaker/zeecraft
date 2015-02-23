@@ -3,7 +3,7 @@ ZeeCraft
 ZeeCraft is a _mini_ Minecraft clone in 588 lines of C.
 
 Originally I intended to keep it at 500 or below, but it felt
-bad to remove certain features like `automatic load/save`.
+bad to remove certain features like *automatic load/save*.
 
 ![Screenshot](data/screenshot.png)
 
@@ -15,6 +15,7 @@ warned.**
 
 Dependencies
 ------------
+* premake4
 * SDL2
 * OpenGL 1.2 (fixed function pipeline)
 

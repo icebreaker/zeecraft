@@ -5,7 +5,7 @@ solution "zc"
     os.rmdir("build")
   elseif _ACTION == "gmake" and os.is("windows") then
     local mingw32 = "i686-w64-mingw32"
-    premake.gcc.cc = mingw32 .. "-gcc"
+    premake.gcc.cc = mingw32 .. "-gcc" -- set cross-compiler
     sdl2_config = "/usr/" .. mingw32  .. "/sys-root/mingw/bin/" .. sdl2_config
     if not os.isfile(sdl2_config) then
       printf("WARNING: '%s' cannot be found.", sdl2_config)
@@ -47,5 +47,10 @@ solution "zc"
     defines { "_GNU_SOURCE" }
 
   project "zc"
-    kind "WindowedApp"
+    if os.is("macosx") then -- Avoid creating an '.app' bundle
+      kind "ConsoleApp"
+    else
+      kind "WindowedApp"
+    end
+
     files { "src/**.c" }

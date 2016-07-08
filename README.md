@@ -25,6 +25,7 @@ Dependencies
 
 Getting Started
 ---------------
+To build it, type:
 
 ```bash
 premake4 gmake

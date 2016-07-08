@@ -420,7 +420,7 @@ void zc_game_shutdown(zc_game *game)
 
 void zc_game_update(zc_game *game, const unsigned long dt)
 {
-	zc_mat4 mat; zc_vec3 new_pos; int px, py, pz, nx, ny, nz, can_move;
+	zc_mat4 mat; zc_vec3 new_pos = {0, }; int px, py, pz, nx, ny, nz, can_move;
 	float speed = dt * 0.05;
 
 	if(game->input.keys[SDL_SCANCODE_ESCAPE])

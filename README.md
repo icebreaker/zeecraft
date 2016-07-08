@@ -48,7 +48,7 @@ build/zc
 
 Credits
 -------
-Special thanks to [Kenney "Asset" Jesus](http://kenney.nl) for *HD* textures.
+Special thanks to [Kenney "Asset" Jesus](http://kenney.nl) for the *HD* textures.
 
 Contribute
 ----------

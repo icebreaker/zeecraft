@@ -19,6 +19,7 @@ warned.**
 
 Dependencies
 ------------
+* C compiler (gcc, clang)
 * premake4
 * SDL2
 * OpenGL 1.4+ (fixed function pipeline)

@@ -67,7 +67,17 @@ typedef unsigned char _zc_unsigned_int_size[sizeof(unsigned int) == 4 ? 1 : -1];
 #define ZC_MAX_SIZE 16
 #define ZC_MAX_BLOCK_TYPES 8
 
-#define ZC_TEXTURE_SIZE 64
+#ifdef ZC_WITH_HD_TEXTURES
+	#define ZC_TEXTURE_SIZE 512
+	#define ZC_TEXTURE_BLOCK_SIZE 128
+	#define ZC_TEXTURE_FILENAME "data/textures_hd.tga"
+  #define ZC_TITLE "ZeeCraft HD"
+#else
+	#define ZC_TEXTURE_SIZE 64
+	#define ZC_TEXTURE_BLOCK_SIZE 16
+	#define ZC_TEXTURE_FILENAME "data/textures.tga"
+  #define ZC_TITLE "ZeeCraft"
+#endif
 
 #define ZC_BLOCK_SIZE 0.5f
 
@@ -367,17 +377,17 @@ int zc_game_initialize(zc_game *game)
 
 	game->block_id = glGenLists(ZC_MAX_BLOCK_TYPES);
 
-	zc_block_create(game->block_id + 0, 16, 1, 1, 0);
-	zc_block_create(game->block_id + 1, 16, 1, 1, 1);
-	zc_block_create(game->block_id + 2, 16, 1, 1, 2);
-	zc_block_create(game->block_id + 3, 16, 3, 3, 3);
-	zc_block_create(game->block_id + 4, 16, 4, 4, 4);
-	zc_block_create(game->block_id + 5, 16, 5, 5, 5);
-	zc_block_create(game->block_id + 6, 16, 7, 7, 6);
+	zc_block_create(game->block_id + 0, ZC_TEXTURE_BLOCK_SIZE, 1, 1, 0);
+	zc_block_create(game->block_id + 1, ZC_TEXTURE_BLOCK_SIZE, 1, 1, 1);
+	zc_block_create(game->block_id + 2, ZC_TEXTURE_BLOCK_SIZE, 1, 1, 2);
+	zc_block_create(game->block_id + 3, ZC_TEXTURE_BLOCK_SIZE, 3, 3, 3);
+	zc_block_create(game->block_id + 4, ZC_TEXTURE_BLOCK_SIZE, 4, 4, 4);
+	zc_block_create(game->block_id + 5, ZC_TEXTURE_BLOCK_SIZE, 5, 5, 5);
+	zc_block_create(game->block_id + 6, ZC_TEXTURE_BLOCK_SIZE, 7, 7, 6);
 
-	zc_block_create(game->block_id + 7, 16, 10, 10, 10);
+	zc_block_create(game->block_id + 7, ZC_TEXTURE_BLOCK_SIZE, 10, 10, 10);
 
-	game->texture_id = zc_texture_load_from_file("data/textures.tga");
+	game->texture_id = zc_texture_load_from_file(ZC_TEXTURE_FILENAME);
 
 	if(zc_game_load(game, "data/game.sav"))
 		return 1;
@@ -667,18 +677,18 @@ void zc_game_draw(zc_game *game)
 	glColor3f(0.6f, 0.6f, 0.6f);
 
 	for(x=0; x<ZC_BS_COUNT; x++)
-		zc_rect_draw(16, 15, ZC_BS_CENTER + x * (ZC_BS_SIZE - ZC_BS_OFFSET),
+		zc_rect_draw(ZC_TEXTURE_BLOCK_SIZE, 15, ZC_BS_CENTER + x * (ZC_BS_SIZE - ZC_BS_OFFSET),
 					 ZC_SCR_H - ZC_BS_SIZE, ZC_BS_SIZE, ZC_BS_SIZE);
 	
 	glColor3f(1.0f, 1.0f, 1.0f);
 
 	for(x=0; x<ZC_BS_COUNT; x++)
-		zc_rect_draw(16, x, (ZC_BS_CENTER + ZC_BS_OFFSET) + x * (ZC_BS_SIZE - ZC_BS_OFFSET), 
+		zc_rect_draw(ZC_TEXTURE_BLOCK_SIZE, x, (ZC_BS_CENTER + ZC_BS_OFFSET) + x * (ZC_BS_SIZE - ZC_BS_OFFSET), 
 					 (ZC_SCR_H - ZC_BS_SIZE) + ZC_BS_OFFSET, 
 					 ZC_BS_SIZE - ZC_BS_OFFSET * 2,
 					 ZC_BS_SIZE - ZC_BS_OFFSET * 2);
 
-	zc_rect_draw(16, 15, ZC_BS_CENTER + game->type * (ZC_BS_SIZE - ZC_BS_OFFSET),
+	zc_rect_draw(ZC_TEXTURE_BLOCK_SIZE, 15, ZC_BS_CENTER + game->type * (ZC_BS_SIZE - ZC_BS_OFFSET),
 				ZC_SCR_H - ZC_BS_SIZE, ZC_BS_SIZE, ZC_BS_SIZE);
 
 	glEnd();
@@ -712,11 +722,11 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-	window = SDL_CreateWindow("ZeeCraft",  SDL_WINDOWPOS_CENTERED, 
-										   SDL_WINDOWPOS_CENTERED,
-										   ZC_SCR_W,
-										   ZC_SCR_H,
-										   SDL_WINDOW_OPENGL);
+	window = SDL_CreateWindow(ZC_TITLE, SDL_WINDOWPOS_CENTERED, 
+										                  SDL_WINDOWPOS_CENTERED,
+										                  ZC_SCR_W,
+										                  ZC_SCR_H,
+										                  SDL_WINDOW_OPENGL);
 
 	if(window == NULL)
 	{
@@ -738,6 +748,8 @@ int main(int argc, char *argv[])
 	SDL_GL_SetSwapInterval(1);
 	SDL_ShowCursor(SDL_DISABLE);
 	SDL_WarpMouseInWindow(window, ZC_SCR_HW, ZC_SCR_HH);
+
+	SDL_Log("GL_VENDOR: %s", glGetString(GL_RENDERER));
 
 	if(!zc_game_initialize(&game))
 	{

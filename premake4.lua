@@ -12,6 +12,11 @@ solution "zc"
     end
   end
 
+  newoption {
+    trigger = "with-hd-textures",
+    description = "Enables HD textures by Kenney"
+  }
+
   location "build"
   objdir "build"
   targetdir "build"
@@ -26,7 +31,10 @@ solution "zc"
   configuration "release"
     defines { "ZC_NDEBUG" }
 
-  configuration { "release", "gmake" }
+  configuration "with-hd-textures"
+    defines { "ZC_WITH_HD_TEXTURES" }
+
+  configuration { "gmake" }
     buildoptions { "-O3" }
 
   configuration { "gmake" }
